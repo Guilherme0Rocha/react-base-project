@@ -29,7 +29,9 @@ root.render(
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/fotos" element={<Fotos/>} />
+        <Route path="/fotos/:id" element={<Fotos/>} />
         <Route path="/atletas" element={<Atletas/>} />
+        <Route path="/atletas/:elenco" element={<Atletas/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<Logout/>} />
         <Route path="/sobrenos" element={<SobreNos/>} />
