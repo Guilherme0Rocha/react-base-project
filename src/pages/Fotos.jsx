@@ -11,7 +11,7 @@ const Fotos = () => {
   
   const filtra = (entrada) => {
   setDados(dados.filter(
-    (ele) => ele.nome.includes(entrada)
+    (ele) => ele.nome.includes(entrada) || ele.link_original.includes(entrada)
   ))
 }
 
