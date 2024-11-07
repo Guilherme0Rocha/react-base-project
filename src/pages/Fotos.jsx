@@ -35,11 +35,17 @@ setDadosFiltrados(dados)
         type="text" 
         onChange={ (e) => filtra(e.target.value)}
       />
-      <select onChange={ (e) => setParametros({'chave' : e.target.value})}>
+      <select onChange={ (e) => {parametros.set('chave', e.target.value); setParametros(parametros)}}>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
         <option value='4'>4</option>
+      </select>
+      <select onChange={ (e) => {parametros.set('autor', e.target.value); setParametros(parametros)}}>
+        <option value='João'>João</option>
+        <option value='Pedro'>Pedro</option>
+        <option value='André'>André</option>
+        <option value='Carlos'>Carlos</option>
       </select>
     <ListContainer>
     {dadosFiltrados.map(
