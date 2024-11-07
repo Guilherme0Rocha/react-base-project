@@ -1,25 +1,38 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import FotoCard from "../components/FotoCard/FotoCard";
 import ListContainer from "../components/ListContainer/ListContainer";
 import dados from "../data/computadores.json";
 import Protegida from "./Protegida";
 import Base from "./Base";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Fotos = () => {
   const [dadosFiltrados, setDados] = useState(dados);
+  const [dadosFiltro, setDadosFiltrados] = useState(dados);
+  const [parametros, setParametros] = useSearchParams();
   
   const filtra = (entrada) => {
-  setDados(dados.filter(
-    (ele) => ele.nome.includes(entrada) || ele.link_original.includes(entrada)
+    setDados(dadosFiltro.filter(
+      (ele) => ele.nome.includes(entrada) || ele.link_original.includes(entrada)
   ))
-}
+  }
+
+
+  useEffect( () => {
+    if (parametros.has('chave')){
+      setDadosFiltrados(dados.filter(
+        (ele) => ele.id == parametros.get('chave')
+      ))
+    } else {
+setDadosFiltrados(dados)
+    }
+    setDados(dadosFiltro);
+  }, [parametros])
 
   return (
     <Base>
       <input 
         type="text" 
-        placeholder="filtro" 
         onChange={ (e) => filtra(e.target.value)}
       />
     <ListContainer>
