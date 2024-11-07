@@ -35,7 +35,7 @@ setDadosFiltrados(dados)
         type="text" 
         onChange={ (e) => filtra(e.target.value)}
       />
-      <select>
+      <select onChange={ (e) => setParametros({'chave' : e.target.value})}>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
